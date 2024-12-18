@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionnaire des Générations</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div id="welcome-screen" class="screen active">
+            <h1>Découvrez votre profil générationnel</h1>
+            <p>Au-delà de l'âge, découvrez à quelle génération vous appartenez vraiment et apprenez à mieux communiquer avec les autres.</p>
+            <button id="start-btn" class="btn">Commencer le questionnaire</button>
+        </div>
+
+        <div id="quiz-screen" class="screen">
+            <div id="progress-bar">
+                <div id="progress"></div>
+            </div>
+            <div id="question-container">
+                <h2 id="question-text"></h2>
+                <div id="answers-container"></div>
+            </div>
+        </div>
+
+        <div id="results-screen" class="screen">
+            <h2>Vos résultats</h2>
+            <div id="generation-result"></div>
+            <div id="recommendations"></div>
+            <button id="restart-btn" class="btn">Recommencer</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
