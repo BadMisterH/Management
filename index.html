@@ -1,61 +1,427 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Questionnaire des Générations</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>GenBridge - Communication intergénérationnelle</title>
+    <meta name="description" content="Découvrez comment améliorer votre communication intergénérationnelle au travail avec notre questionnaire interactif et personnalisé.">
+    <link rel="stylesheet" href="landing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="landing.css">
 </head>
 <body>
-    <div class="container">
-        <div id="welcome-screen" class="screen active">
-            <h1>Découvrez votre profil générationnel</h1>
-            <p>Ce questionnaire vous aidera à comprendre votre style de travail et celui de votre collègue pour améliorer votre communication intergénérationnelle.</p>
-            <button id="start-btn" class="btn">Commencer le questionnaire</button>
-        </div>
-
-        <div id="quiz-screen" class="screen">
-            <div id="progress-container">
-                <div id="progress-bar">
-                    <div id="progress"></div>
-                </div>
-                <div id="part-indicator">Partie 1: Votre profil</div>
-                <div id="question-counter"></div>
+    <div class="hero">
+        <nav>
+            <a href="#" class="logo">
+                <i class="fas fa-bridge"></i>
+                GenBridge
+            </a>
+            <div class="nav-links">
+                <a href="#how-it-works" class="nav-link" style="--i: 1">Comment ça marche</a>
+                <a href="#benefits" class="nav-link" style="--i: 2">Avantages</a>
+                <a href="#generations" class="nav-link" style="--i: 3">Générations</a>
+                <a href="#faq" class="nav-link" style="--i: 4">FAQ</a>
+                <a href="./outils.html" class="cta-button" style="--i: 5">
+                    Commencer
+                    <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
-            <div id="question-container">
-                <h2 id="question-text"></h2>
-                <div id="answers-container"></div>
-                <div class="navigation-buttons">
-                    <button id="prev-btn" class="btn nav-btn" disabled>Question précédente</button>
-                    <button id="next-btn" class="btn nav-btn" disabled>Question suivante</button>
+            <button class="menu-button" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+
+        <div class="hero-content">
+            <h1>Construisez des ponts entre les générations au travail</h1>
+            <p>Découvrez comment mieux collaborer avec vos collègues de différentes générations grâce à notre questionnaire interactif et personnalisé</p>
+            
+            <div class="hero-buttons">
+                <a style="color: #7c3aed; font-weight: bold; background: white; padding: 20px 10px; border-radius: 20px;" href="./outils.html" class="primary-button">
+                    <i class="fas fa-arrow-right"></i>
+                    Commencer l'évaluation gratuite
+                </a>
+            </div>
+
+            <div style="margin-top: 30px;" class="hero-features">
+                <div class="feature-item">
+                    <i class="fas fa-bolt"></i>
+                    Résultats instantanés
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check"></i>
+                    100% gratuit
                 </div>
             </div>
-        </div>
 
-        <div id="transition-screen" class="screen">
-            <div class="transition-content">
-                <h2>Première partie terminée !</h2>
-                <div class="completion-message">
-                    <div class="checkmark-circle">
-                        <div class="checkmark"></div>
+            <div class="hero-stats">
+                <div class="stat-group">
+                    <div class="stat-item">
+                        <i class="fas fa-users"></i>
+                        <div class="stat-content">
+                            <div class="stat-number">10K+</div>
+                            <div class="stat-label">Utilisateurs</div>
+                        </div>
                     </div>
-                    <p>Vous avez complété la première partie du questionnaire qui concernait votre profil.</p>
+                    <div class="stat-item">
+                        <i class="fas fa-star"></i>
+                        <div class="stat-content">
+                            <div class="stat-number">4.9/5</div>
+                            <div class="stat-label">Note moyenne</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-heart"></i>
+                        <div class="stat-content">
+                            <div class="stat-number">98%</div>
+                            <div class="stat-label">Satisfaction</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="next-part-preview">
-                    <h3>Prochaine étape</h3>
-                    <p>Nous allons maintenant analyser le profil de votre collègue pour optimiser votre communication.</p>
-                </div>
-                <button id="continue-btn" class="btn pulse">Continuer vers la partie 2</button>
             </div>
-        </div>
-
-        <div id="results-screen" class="screen">
-            <h2>Vos résultats</h2>
-            <div id="generation-result"></div>
-            <div id="recommendations"></div>
-            <button id="restart-btn" class="btn">Recommencer</button>
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2>Comment ça marche ?</h2>
+            <p class="section-subtitle">Un processus simple en trois étapes pour améliorer votre communication</p>
+            
+            <div class="steps-grid">
+                <div class="step-card animate-on-scroll">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h3>Répondez au questionnaire</h3>
+                    <p>Complétez notre questionnaire interactif pour identifier votre style de communication et vos préférences générationnelles</p>
+                </div>
+
+                <div class="step-card animate-on-scroll">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Recevez votre analyse</h3>
+                    <p>Obtenez une analyse détaillée de votre profil et des recommandations personnalisées pour améliorer votre communication</p>
+                </div>
+
+                <div class="step-card animate-on-scroll">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Appliquez les conseils</h3>
+                    <p>Mettez en pratique les recommandations dans votre quotidien professionnel pour une meilleure collaboration</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits" class="benefits">
+        <div class="container">
+            <h2>Pourquoi utiliser GenBridge ?</h2>
+            <p class="section-subtitle">Découvrez les avantages d'une meilleure communication intergénérationnelle</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card animate-on-scroll">
+                    <div class="benefit-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Communication améliorée</h3>
+                    <p>Apprenez à adapter votre style de communication pour une meilleure compréhension mutuelle</p>
+                    <ul>
+                        <li>Réduction des malentendus</li>
+                        <li>Messages plus clairs</li>
+                        <li>Feedback constructif</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card animate-on-scroll">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Collaboration efficace</h3>
+                    <p>Optimisez le travail d'équipe en comprenant les forces de chaque génération</p>
+                    <ul>
+                        <li>Projets plus fluides</li>
+                        <li>Meilleure synergie</li>
+                        <li>Innovation accrue</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card animate-on-scroll">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Performance accrue</h3>
+                    <p>Augmentez la productivité grâce à une meilleure compréhension intergénérationnelle</p>
+                    <ul>
+                        <li>Objectifs atteints</li>
+                        <li>Équipes motivées</li>
+                        <li>Résultats mesurables</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="generations" class="generations">
+        <div class="container">
+            <h2>Les générations au travail</h2>
+            <p class="section-subtitle">Comprendre les différences pour mieux collaborer</p>
+            
+            <div class="generations-grid">
+                <div class="generation-card animate-on-scroll">
+                    <div class="generation-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>Baby Boomers</h3>
+                    <p class="years">1946-1964</p>
+                    <ul>
+                        <li>Expérience et expertise</li>
+                        <li>Éthique du travail forte</li>
+                        <li>Loyauté envers l'entreprise</li>
+                    </ul>
+                </div>
+
+                <div class="generation-card animate-on-scroll">
+                    <div class="generation-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <h3>Génération X</h3>
+                    <p class="years">1965-1980</p>
+                    <ul>
+                        <li>Indépendance</li>
+                        <li>Adaptabilité</li>
+                        <li>Équilibre vie pro/perso</li>
+                    </ul>
+                </div>
+
+                <div class="generation-card animate-on-scroll">
+                    <div class="generation-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Millennials</h3>
+                    <p class="years">1981-1996</p>
+                    <ul>
+                        <li>Natifs du numérique</li>
+                        <li>Collaboration</li>
+                        <li>Innovation</li>
+                    </ul>
+                </div>
+
+                <div class="generation-card animate-on-scroll">
+                    <div class="generation-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Génération Z</h3>
+                    <p class="years">1997-2012</p>
+                    <ul>
+                        <li>Ultra-connectés</li>
+                        <li>Multitâches</li>
+                        <li>Entrepreneuriat</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2>Découvrez les retours de nos utilisateurs</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">★★★★★</div>
+                        <blockquote>
+                            "Grâce à GenBridge, j'ai mieux compris comment adapter ma communication avec mes collègues plus jeunes. Les résultats sont vraiment pertinents !"
+                        </blockquote>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Photo de Marie D.">
+                        <div class="author-info">
+                            <h4>Marie D.</h4>
+                            <p>Manager, Gen X</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">★★★★★</div>
+                        <blockquote>
+                            "Les recommandations m'ont permis d'améliorer significativement mes interactions avec mon équipe multigénérationnelle."
+                        </blockquote>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Photo de Thomas L.">
+                        <div class="author-info">
+                            <h4>Thomas L.</h4>
+                            <p>Chef de projet, Millennial</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">★★★★★</div>
+                        <blockquote>
+                            "Un outil indispensable pour toute entreprise qui souhaite améliorer la collaboration entre les différentes générations."
+                        </blockquote>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Photo de Sophie M.">
+                        <div class="author-info">
+                            <h4>Sophie M.</h4>
+                            <p>DRH, Baby Boomer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">★★★★★</div>
+                        <blockquote>
+                            "Grâce à GenBridge, j'ai pu grandement améliorer ma communication avec mon collaborateur Joffrey, à qui je compte avouer mes sentiments dans les prochains jours"
+                        </blockquote>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="./img/B.jpg" alt="Photo de Marie D.">
+                        <div class="author-info">
+                            <h4>Baptiste T.</h4>
+                            <p>Envoyeur de Missile, Gen X</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2>Questions fréquentes</h2>
+            <p class="section-subtitle">Tout ce que vous devez savoir sur GenBridge</p>
+            
+            <div class="faq-grid">
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        <h3>Combien de temps prend le questionnaire ?</h3>
+                        <button class="faq-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Le questionnaire prend environ 5-10 minutes à compléter. Les résultats sont instantanés.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        <h3>Les résultats sont-ils confidentiels ?</h3>
+                        <button class="faq-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Oui, toutes les données sont traitées de manière confidentielle et ne sont pas partagées avec des tiers.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        <h3>Puis-je utiliser GenBridge pour toute mon équipe ?</h3>
+                        <button class="faq-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolument ! GenBridge est parfait pour les équipes de toutes tailles. Contactez-nous pour une solution personnalisée.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        <h3>Les recommandations sont-elles personnalisées ?</h3>
+                        <button class="faq-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Oui, chaque recommandation est adaptée à votre profil générationnel et à celui de votre collègue.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <div class="cta-content" style="text-align: center;">
+            <h2>Prêt à transformer votre communication ?</h2>
+            <p>Découvrez votre profil générationnel et obtenez des conseils personnalisés en moins de 10 minutes</p>
+            <a href="./outils.html" class="cta-button">
+                <span>Commencer l'évaluation gratuite</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+            <p class="cta-note">Pas d'inscription requise • Résultats instantanés</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section brand">
+                <div class="logo">
+                    <i class="fas fa-bridge"></i>
+                    GenBridge
+                </div>
+                <p>Construire des ponts entre les générations au travail</p>
+                <div class="social-links">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#how-it-works">Comment ça marche</a></li>
+                    <li><a href="#benefits">Avantages</a></li>
+                    <li><a href="#generations">Générations</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> contact@genbridge.com</li>
+                    <li><i class="fas fa-phone"></i> +33 1 23 45 67 89</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Paris, France</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Légal</h4>
+                <ul>
+                    <li><a href="#">Mentions légales</a></li>
+                    <li><a href="#">Politique de confidentialité</a></li>
+                    <li><a href="#">Conditions d'utilisation</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 GenBridge. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="landing.js"></script>
 </body>
 </html>
+
+
+
+
+
+<!-- outil.html -->
+

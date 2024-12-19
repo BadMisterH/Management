@@ -175,7 +175,7 @@ p {
 
 #part-indicator {
     position: absolute;
-    top: -25px;
+    top: -45px;
     right: 0;
     background: #667eea;
     color: white;
@@ -184,9 +184,13 @@ p {
     font-size: 0.9rem;
 }
 
+.profile-your-profile{
+    display: none !important;
+}
+
 #question-counter {
     position: absolute;
-    top: -25px;
+    top: -45px;
     left: 0;
     background: #4a5568;
     color: white;
@@ -448,6 +452,7 @@ p {
 
 .your-profile {
     border-left: 5px solid #667eea;
+    display: none;
 }
 
 .other-profile {
@@ -539,4 +544,93 @@ p {
     .profile {
         min-width: 100%;
     }
+}
+
+/* Styles pour l'écran de transition 2 */
+#transition-screen2 {
+    text-align: center;
+    padding: 2rem;
+}
+
+#transition-screen2 .transition-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#transition-screen2 h2 {
+    color: #4CAF50;
+    margin-bottom: 2rem;
+}
+
+/* Styles pour les résultats des mises en situation */
+#situations-feedback {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+#situations-feedback h3 {
+    color: #4CAF50;
+    margin-bottom: 1rem;
+}
+
+#situations-feedback.hidden {
+    display: none;
+}
+
+#situations-result {
+    text-align: left;
+}
+
+.explanation-item {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: white;
+    border-left: 4px solid #4CAF50;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.explanation-item p {
+    margin: 0.5rem 0;
+}
+
+.explanation-item strong {
+    color: #2c3e50;
+}
+
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.back-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.back-button i {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.back-button:hover i {
+    transform: translateX(-4px);
 }

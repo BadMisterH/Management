@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionnaire des Générations</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <a style="border: solid 2px #7c3aed; text-decoration: none;" href="./index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        Retour à l'accueil
+    </a>
+    <div class="container">
+        <div id="welcome-screen" class="screen active">
+            <h1>Découvrez votre profil générationnel</h1>
+            <p>Ce questionnaire vous aidera à comprendre votre style de travail et celui de votre collègue pour améliorer votre communication intergénérationnelle.</p>
+            <button id="start-btn" class="btn">Commencer le questionnaire</button>
+        </div>
+
+        <div id="quiz-screen" class="screen">
+            <div id="progress-container">
+                <div id="progress-bar">
+                    <div id="progress"></div>
+                </div>
+                <div id="part-indicator">Partie 1: Votre profil</div>
+                <div id="question-counter"></div>
+            </div>
+            <div id="question-container">
+                <h2 id="question-text"></h2>
+                <div id="answers-container"></div>
+                <div class="navigation-buttons">
+                    <button id="prev-btn" class="btn nav-btn" disabled>Question précédente</button>
+                    <button id="next-btn" class="btn nav-btn" disabled>Question suivante</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="transition-screen" class="screen">
+            <div class="transition-content">
+                <h2>Première partie terminée !</h2>
+                <div class="completion-message">
+                    <div class="checkmark-circle">
+                        <div class="checkmark"></div>
+                    </div>
+                    <p>Vous avez complété la première partie du questionnaire qui concernait votre profil.</p>
+                </div>
+                <div class="next-part-preview">
+                    <h3>Prochaine étape</h3>
+                    <p>Nous allons maintenant analyser le profil de votre collègue pour optimiser votre communication.</p>
+                </div>
+                <button id="continue-btn" class="btn pulse">Continuer vers la partie 2</button>
+            </div>
+        </div>
+
+        <div id="transition-screen2" class="screen">
+            <div class="transition-content">
+                <h2>Deuxième partie terminée !</h2>
+                <div class="completion-message">
+                    <div class="checkmark-circle">
+                        <div class="checkmark"></div>
+                    </div>
+                    <p>Excellent ! Vous avez terminé l'analyse des profils.</p>
+                </div>
+                <div class="next-part-preview">
+                    <h3>Dernière étape</h3>
+                    <p>Testons maintenant vos connaissances avec des mises en situation concrètes entre différentes générations.</p>
+                </div>
+                <button id="continue-btn2" class="btn pulse">Continuer vers la partie 3</button>
+            </div>
+        </div>
+
+        <div id="results-screen" class="screen">
+            <h2>Vos résultats</h2>
+            <div id="generation-result"></div>
+            <div id="recommendations"></div>
+            <div id="situations-feedback" class="hidden">
+                <h3>Analyse des mises en situation</h3>
+                <div id="situations-result"></div>
+            </div>
+            <button id="restart-btn" class="btn">Recommencer</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
