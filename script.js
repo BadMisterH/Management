@@ -107,16 +107,35 @@ const questions = [
             { text: "Vous les considérez comme un atout indispensable", points: { genZ: 0, genY: 3, genX: 0, boomer: 0 } },
             { text: "Vous les maîtrisez pleinement et cherchez à les optimiser", points: { genZ: 3, genY: 0, genX: 0, boomer: 0 } }
         ]
+    },
+    {
+        question: "Quel est le principal problème de communication que vous rencontrez avec votre collègue ?",
+        answers: [
+            { text: "Manque de clarté dans les instructions", points: { genZ: 0, genY: 0, genX: 0, boomer: 1 } },
+            { text: "Différences de priorités", points: { genZ: 0, genY: 0, genX: 1, boomer: 0 } },
+            { text: "Différences de style de communication", points: { genZ: 0, genY: 1, genX: 0, boomer: 0 } },
+            { text: "Manque de réactivité", points: { genZ: 1, genY: 0, genX: 0, boomer: 0 } }
+        ]
+    },
+    {
+        question: "Comment décririez-vous votre relation actuelle avec ce collègue ?",
+        answers: [
+            { text: "Cordiale mais distante", points: { genZ: 0, genY: 0, genX: 0, boomer: 1 } },
+            { text: "Professionnelle mais tendue", points: { genZ: 0, genY: 0, genX: 1, boomer: 0 } },
+            { text: "Amicale mais parfois conflictuelle", points: { genZ: 0, genY: 1, genX: 0, boomer: 0 } },
+            { text: "Très proche mais avec des malentendus fréquents", points: { genZ: 1, genY: 0, genX: 0, boomer: 0 } }
+        ]
     }
 ];
 
-
-
-
-
-
 let currentQuestion = 0;
 let userScores = {
+    genZ: 0,
+    genY: 0,
+    genX: 0,
+    boomer: 0
+};
+let colleagueScores = {
     genZ: 0,
     genY: 0,
     genX: 0,
@@ -153,12 +172,12 @@ function showQuestion() {
         
         question.answers.forEach(answer => {
             const button = document.createElement('button');
-            button.className = 'answer-btn';
             button.textContent = answer.text;
+            button.classList.add('answer-btn');
             button.addEventListener('click', () => selectAnswer(answer));
             answersContainer.appendChild(button);
         });
-
+        
         updateProgressBar();
     } else {
         showResults();
@@ -166,11 +185,15 @@ function showQuestion() {
 }
 
 function selectAnswer(answer) {
-    // Ajouter les points
-    for (const [generation, points] of Object.entries(answer.points)) {
-        userScores[generation] += points;
+    if (currentQuestion < 12) {
+        Object.keys(answer.points).forEach(gen => {
+            userScores[gen] += answer.points[gen];
+        });
+    } else {
+        Object.keys(answer.points).forEach(gen => {
+            colleagueScores[gen] += answer.points[gen];
+        });
     }
-    
     currentQuestion++;
     showQuestion();
 }
@@ -184,47 +207,50 @@ function showResults() {
     quizScreen.classList.remove('active');
     resultsScreen.classList.add('active');
 
-    // Trouver la génération dominante
-    let maxScore = 0;
-    let dominantGeneration = '';
-    
-    for (const [generation, score] of Object.entries(userScores)) {
-        if (score > maxScore) {
-            maxScore = score;
-            dominantGeneration = generation;
-        }
-    }
+    const userGeneration = getGeneration(userScores);
+    const colleagueGeneration = getGeneration(colleagueScores);
 
-    // Afficher les résultats
-    let generationName = '';
-    let recommendations_text = '';
-    
-    switch(dominantGeneration) {
-        case 'genZ':
-            generationName = 'Génération Z';
-            recommendations_text = 'Vous êtes à l\'aise avec la technologie et les réseaux sociaux. Conseils pour interagir avec les autres générations : soyez patient avec ceux qui sont moins technophiles et valorisez leur expérience.';
-            break;
-        case 'genY':
-            generationName = 'Génération Y (Millennial)';
-            recommendations_text = 'Vous êtes adaptable et orienté travail d\'équipe. Pour communiquer efficacement, privilégiez un équilibre entre digital et interactions en personne.';
-            break;
-        case 'genX':
-            generationName = 'Génération X';
-            recommendations_text = 'Vous êtes indépendant et pragmatique. Utilisez votre capacité d\'adaptation pour faire le pont entre les générations plus jeunes et plus âgées.';
-            break;
-        case 'boomer':
-            generationName = 'Baby Boomer';
-            recommendations_text = 'Vous valorisez l\'expérience et la tradition. Partagez votre sagesse tout en restant ouvert aux nouvelles approches des générations plus jeunes.';
-            break;
-    }
+    generationResult.innerHTML = `
+        <h2>Résultats</h2>
+        <p>Votre génération : <strong>${userGeneration}</strong></p>
+        <p>La génération de votre collègue : <strong>${colleagueGeneration}</strong></p>
+    `;
 
-    generationResult.innerHTML = `<h3>Vous appartenez principalement à la ${generationName}</h3>`;
-    recommendations.innerHTML = `<h4>Recommandations :</h4><p>${recommendations_text}</p>`;
+    recommendations.innerHTML = getRecommendations(userGeneration, colleagueGeneration);
+}
+
+function getRecommendations(userGen, colleagueGen) {
+    const recommendationMap = {
+        'Baby Boomer-Génération X': 'Concentrez-vous sur la communication formelle et le respect de la hiérarchie. Privilégiez les réunions en face à face.',
+        'Baby Boomer-Génération Y': 'Trouvez un équilibre entre les méthodes traditionnelles et modernes. Expliquez le "pourquoi" des décisions.',
+        'Baby Boomer-Génération Z': 'Adoptez une communication plus directe et numérique. Soyez ouvert aux nouvelles technologies.',
+        'Génération X-Génération Y': 'Combinez autonomie et collaboration. Utilisez des outils de communication mixtes.',
+        'Génération X-Génération Z': 'Privilégiez la communication rapide et efficace. Soyez flexible dans les méthodes de travail.',
+        'Génération Y-Génération Z': 'Utilisez les outils numériques et la communication instantanée. Favorisez le travail collaboratif.'
+    };
+
+    const key = [userGen, colleagueGen].sort().join('-');
+    return `<h3>Recommandations pour améliorer votre collaboration :</h3>
+            <p>${recommendationMap[key] || 'Concentrez-vous sur une communication ouverte et respectueuse des différences générationnelles.'}</p>`;
+}
+
+function getGeneration(scores) {
+    const maxScore = Math.max(...Object.values(scores));
+    if (scores.boomer === maxScore) return 'Baby Boomer';
+    if (scores.genX === maxScore) return 'Génération X';
+    if (scores.genY === maxScore) return 'Génération Y';
+    return 'Génération Z';
 }
 
 function restartQuiz() {
     currentQuestion = 0;
     userScores = {
+        genZ: 0,
+        genY: 0,
+        genX: 0,
+        boomer: 0
+    };
+    colleagueScores = {
         genZ: 0,
         genY: 0,
         genX: 0,
